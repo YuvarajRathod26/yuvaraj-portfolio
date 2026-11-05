@@ -6,49 +6,116 @@
   <meta name="description" content="Yuvaraj Rathod — Java Full Stack Developer portfolio" />
   <title>Yuvaraj Rathod | Java Full Stack Developer</title>
   <style>
-    :root { --ink:#102033; --muted:#5e6b7a; --paper:#f6f7f2; --card:#fff; --navy:#102a43; --teal:#007f79; --gold:#f4b942; --line:#dce3e1; }
-    * { box-sizing:border-box; } html { scroll-behavior:smooth; }
-    body { margin:0; font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background:radial-gradient(circle at 95% 6%, #d7f0ea 0, transparent 22rem), var(--paper); color:var(--ink); line-height:1.6; }
-    .wrap { width:min(1120px, calc(100% - 40px)); margin:auto; }
-    nav { display:flex; justify-content:space-between; align-items:center; padding:24px 0; }
-    .brand { color:var(--navy); font-weight:850; text-decoration:none; letter-spacing:-.045em; font-size:1.58rem; }
-    nav ul { display:flex; list-style:none; gap:24px; padding:0; margin:0; } nav a { color:var(--muted); text-decoration:none; font-size:.92rem; font-weight:650; } nav a:hover { color:var(--teal); }
-    .hero { display:grid; grid-template-columns:1.35fr .65fr; align-items:center; min-height:610px; gap:48px; padding:74px 0 90px; }
-    .eyebrow { color:var(--teal); text-transform:uppercase; font-weight:800; font-size:.77rem; letter-spacing:.14em; margin:0 0 18px; }
-    h1 { font-size:clamp(3rem, 7vw, 5.9rem); line-height:.98; letter-spacing:-.07em; margin:0; color:var(--navy); max-width:750px; }
-    .accent { color:var(--teal); } .intro { max-width:600px; margin:28px 0 34px; font-size:1.12rem; color:var(--muted); }
-    .actions { display:flex; gap:14px; flex-wrap:wrap; } .button { display:inline-flex; align-items:center; justify-content:center; padding:13px 20px; border-radius:7px; font-weight:750; text-decoration:none; transition:.2s transform,.2s background; } .button:hover { transform:translateY(-2px); }
-    .primary { color:#fff; background:var(--teal); } .secondary { color:var(--navy); border:1px solid #bcc8c6; }
-    .portrait { aspect-ratio:1; background:var(--navy); border:7px solid #fff; border-radius:24px; position:relative; overflow:hidden; box-shadow:18px 18px 0 var(--gold), 0 20px 50px rgba(16,42,67,.18); }
+    :root { --ink:#142436; --muted:#586b7c; --paper:#f5f8f7; --card:#fff; --navy:#102a43; --teal:#087e78; --gold:#f4b942; --line:#dce5e4; --shadow:0 18px 50px rgba(16,42,67,.08); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:96px; }
+    body { margin:0; font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:radial-gradient(ellipse at 88% 9%,#d7f0ea 0,transparent 27rem),var(--paper); color:var(--ink); line-height:1.65; }
+    a { color:inherit; }
+    .wrap { width:min(1120px,calc(100% - 44px)); margin:auto; }
+    header { position:sticky; top:0; z-index:10; background:rgba(245,248,247,.9); border-bottom:1px solid rgba(220,229,228,.8); backdrop-filter:blur(16px); }
+    nav { min-height:78px; display:flex; justify-content:space-between; align-items:center; gap:24px; }
+    .brand { color:var(--navy); font-weight:850; text-decoration:none; letter-spacing:-.045em; font-size:1.35rem; white-space:nowrap; }
+    nav ul { display:flex; flex-wrap:wrap; justify-content:flex-end; list-style:none; gap:8px 22px; padding:0; margin:0; }
+    nav a { color:var(--muted); text-decoration:none; font-size:.9rem; font-weight:700; transition:color .2s ease; }
+    nav ul a:hover,nav ul a:focus-visible { color:var(--teal); }
+    .hero { display:grid; grid-template-columns:1.25fr .75fr; align-items:center; min-height:600px; gap:64px; padding:80px 0 88px; }
+    .eyebrow { display:inline-flex; align-items:center; gap:9px; color:var(--teal); text-transform:uppercase; font-weight:850; font-size:.74rem; letter-spacing:.14em; margin:0 0 20px; }
+    .eyebrow:before { content:""; width:24px; height:2px; background:var(--gold); }
+    h1 { font-size:clamp(3.1rem,7.5vw,6rem); line-height:.98; letter-spacing:-.075em; margin:0; color:var(--navy); max-width:760px; }
+    .accent { color:var(--teal); }
+    .intro { max-width:620px; margin:26px 0 30px; font-size:1.08rem; color:var(--muted); }
+    .actions { display:flex; gap:12px; flex-wrap:wrap; }
+    .button { display:inline-flex; align-items:center; justify-content:center; padding:12px 18px; border-radius:8px; font-weight:780; text-decoration:none; transition:transform .2s ease,box-shadow .2s ease,background .2s ease; }
+    .button:hover { transform:translateY(-2px); box-shadow:0 8px 18px rgba(16,42,67,.12); }
+    .primary { color:#fff; background:var(--teal); }
+    .secondary { color:var(--navy); border:1px solid #bdccca; background:rgba(255,255,255,.6); }
+    .portrait { aspect-ratio:1; background:var(--navy); border:8px solid #fff; border-radius:28px; position:relative; overflow:hidden; box-shadow:16px 16px 0 var(--gold),var(--shadow); max-width:390px; justify-self:end; width:100%; }
     .portrait img { display:block; width:100%; height:100%; object-fit:cover; object-position:43% 46%; transition:transform .45s ease; }
-    .portrait:hover img { transform:scale(1.055); }
-    section { padding:92px 0; border-top:1px solid var(--line); } .section-label { font-size:.78rem; font-weight:800; color:var(--teal); letter-spacing:.12em; text-transform:uppercase; } h2 { color:var(--navy); font-size:clamp(2rem,4vw,3.15rem); line-height:1.08; letter-spacing:-.055em; margin:9px 0 30px; }
-    .about { display:grid; grid-template-columns:1fr 1fr; gap:70px; } .about p { font-size:1.12rem; margin:0; color:var(--muted); } .about strong { color:var(--ink); }
-    .skills { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; } .skill { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:20px; } .skill h3 { margin:0 0 9px; color:var(--navy); font-size:1rem; } .skill p { margin:0; color:var(--muted); font-size:.94rem; }
-    .projects { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; } .project { min-height:275px; padding:26px; background:var(--navy); border-radius:12px; color:#e8f0f3; display:flex; flex-direction:column; justify-content:space-between; transition:transform .22s ease, box-shadow .22s ease; } .project:hover { transform:translateY(-7px); box-shadow:0 16px 28px rgba(16,42,67,.16); } .project:nth-child(2) { background:var(--teal); } .project:nth-child(3) { background:#d99c19; color:#142a3d; } .project-type { font-size:.72rem; text-transform:uppercase; font-weight:800; letter-spacing:.11em; opacity:.8; } .project h3 { font-size:1.55rem; line-height:1.1; margin:14px 0; letter-spacing:-.04em; } .project p { font-size:.93rem; margin:0; opacity:.88; }
-    .contact { background:var(--navy); color:#fff; border-top:0; } .contact h2 { color:#fff; max-width:670px; } .contact p { color:#c9d7df; font-size:1.08rem; max-width:610px; } .contact .button { background:var(--gold); color:var(--navy); margin-top:12px; border:0; cursor:pointer; font:inherit; } .contact .button.contact-email { background:#fff; } .contact .button.linkedin { background:transparent; color:#fff; border:1px solid #698093; }
-    footer { padding:25px 0; background:#0b1d2f; color:#afc0cb; font-size:.88rem; } footer .wrap { display:flex; justify-content:space-between; gap:20px; }
-    @media (max-width:760px) { nav ul { gap:14px; } .hero,.about { grid-template-columns:1fr; } .hero { padding:55px 0 72px; gap:48px; min-height:0; } .portrait { width:min(290px,80vw); } .projects { grid-template-columns:1fr; } .skills { grid-template-columns:1fr; } section { padding:65px 0; } }
-    @media (max-width:440px) { nav ul li:first-child { display:none; } .wrap { width:min(100% - 32px,1120px); } footer .wrap { flex-direction:column; gap:4px; } }
+    .portrait:hover img { transform:scale(1.045); }
+    .quick-facts { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:0 auto 76px; }
+    .fact { padding:18px 20px; border:1px solid var(--line); border-radius:12px; background:rgba(255,255,255,.78); }
+    .fact strong { display:block; color:var(--navy); font-size:1.05rem; line-height:1.35; }
+    .fact span { color:var(--muted); font-size:.83rem; }
+    section { padding:86px 0; border-top:1px solid var(--line); }
+    .section-label { font-size:.75rem; font-weight:850; color:var(--teal); letter-spacing:.13em; text-transform:uppercase; }
+    h2 { color:var(--navy); font-size:clamp(2rem,4vw,3.15rem); line-height:1.08; letter-spacing:-.06em; margin:9px 0 28px; }
+    .about { display:grid; grid-template-columns:.9fr 1.1fr; gap:70px; align-items:start; }
+    .about p { font-size:1.08rem; margin:0; color:var(--muted); }
+    .about strong { color:var(--ink); }
+    #experience .about>p,#education .about>div:last-child { padding:26px; border-radius:14px; border:1px solid var(--line); background:#fff; box-shadow:var(--shadow); }
+    .credentials { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+    .credential-card { padding:26px; border-radius:14px; border:1px solid var(--line); background:#fff; box-shadow:var(--shadow); }
+    .credential-kicker { display:block; color:var(--teal); font-size:.74rem; font-weight:850; letter-spacing:.13em; text-transform:uppercase; margin-bottom:12px; }
+    .credential-card h3 { color:var(--navy); font-size:1.2rem; line-height:1.3; margin:0 0 10px; }
+    .credential-card p { color:var(--muted); margin:0; }
+    .credential-result { display:block; color:var(--ink); margin-top:12px; }
+    .cert-list { display:grid; gap:12px; margin-top:22px; padding-top:19px; border-top:1px solid var(--line); }
+    .cert-list p strong { color:var(--ink); }
+    .skills { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+    .skill { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:21px; transition:transform .2s ease,box-shadow .2s ease; }
+    .skill:hover { transform:translateY(-3px); box-shadow:var(--shadow); }
+    .skill h3 { margin:0 0 9px; color:var(--navy); font-size:1rem; }
+    .skill p { margin:0; color:var(--muted); font-size:.94rem; }
+    .projects { display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:18px; }
+    .project { min-height:290px; padding:27px; background:var(--navy); border-radius:15px; color:#e8f0f3; display:flex; flex-direction:column; justify-content:space-between; transition:transform .22s ease,box-shadow .22s ease; }
+    .project:hover { transform:translateY(-5px); box-shadow:0 18px 32px rgba(16,42,67,.18); }
+    .project:nth-child(2) { background:var(--teal); }
+    .project-type { font-size:.7rem; text-transform:uppercase; font-weight:850; letter-spacing:.12em; opacity:.8; }
+    .project h3 { font-size:1.5rem; line-height:1.12; margin:13px 0; letter-spacing:-.04em; }
+    .project p { font-size:.92rem; margin:0; opacity:.9; }
+    .profiles { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+    .profile-card { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:23px 25px; background:#fff; border:1px solid var(--line); border-radius:13px; text-decoration:none; box-shadow:0 8px 24px rgba(16,42,67,.04); transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease; }
+    .profile-card:hover { transform:translateY(-3px); border-color:#a6ceca; box-shadow:var(--shadow); }
+    .profile-card strong { display:block; color:var(--navy); font-size:1.08rem; }
+    .profile-card span { color:var(--muted); font-size:.9rem; }
+    .profile-arrow { color:var(--teal); font-size:1.35rem; font-weight:800; }
+    .contact { background:var(--navy); color:#fff; border-top:0; }
+    .contact h2 { color:#fff; max-width:670px; }
+    .contact p { color:#c9d7df; font-size:1.08rem; max-width:610px; }
+    .contact .button { background:var(--gold); color:var(--navy); margin-top:8px; border:0; cursor:pointer; font:inherit; }
+    .contact .button.contact-email { background:#fff; }
+    .contact .button.linkedin { background:transparent; color:#fff; border:1px solid #698093; }
+    footer { padding:23px 0; background:#0b1d2f; color:#afc0cb; font-size:.86rem; }
+    footer .wrap { display:flex; justify-content:space-between; gap:20px; }
+    @media (max-width:760px) {
+      nav { align-items:flex-start; flex-direction:column; justify-content:center; gap:8px; padding:14px 0; }
+      nav ul { justify-content:flex-start; gap:6px 16px; }
+      .hero,.about { grid-template-columns:1fr; }
+      .hero { padding:56px 0 64px; gap:42px; min-height:0; }
+      .portrait { width:min(310px,78vw); justify-self:start; }
+      .quick-facts { margin-bottom:52px; }
+      section { padding:66px 0; }
+    }
+    @media (max-width:520px) {
+      .wrap { width:min(100% - 32px,1120px); }
+      .quick-facts { grid-template-columns:1fr; gap:9px; }
+      .fact { padding:13px 16px; }
+      .skills,.profiles,.credentials { grid-template-columns:1fr; }
+      footer .wrap { flex-direction:column; gap:4px; }
+    }
+    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; transition:none!important; } }
   </style>
 </head>
 <body>
   <header class="wrap">
     <nav aria-label="Primary navigation">
       <a class="brand" href="#home">Yuvaraj Rathod</a>
-      <ul><li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li><li><a href="#contact">Contact</a></li></ul>
+      <ul><li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li><li><a href="#education">Education</a></li><li><a href="#profiles">Profiles</a></li><li><a href="#contact">Contact</a></li></ul>
     </nav>
   </header>
   <main>
     <section class="wrap hero" id="home" style="border-top:0">
-      <div><p class="eyebrow">Java Full Stack Developer</p><h1>Building reliable <span class="accent">web experiences.</span></h1><p class="intro">I’m Yuvaraj Rathod, a Java full-stack developer with hands-on experience building database-driven web applications using Spring Boot and modern frontend technologies. I’m a curious, quick learner who enjoys turning feedback into better solutions.</p><div class="actions"><a class="button primary" href="#projects">View my work</a><a class="button secondary" href="#contact">Let’s connect</a></div></div>
+      <div><p class="eyebrow">Java Full Stack Developer · Bengaluru, India</p><h1>Turning ideas into <span class="accent">useful software.</span></h1><p class="intro">I’m Yuvaraj Rathod, a Java full-stack developer with hands-on experience building database-driven applications using Core Java, Spring Boot, Spring MVC, and modern frontend technologies. I enjoy solving practical problems and shipping reliable features across the stack.</p><div class="actions"><a class="button primary" href="#projects">Explore my projects</a><a class="button secondary" href="#contact">Contact me</a><a class="button secondary" href="https://github.com/YuvarajRathod26" target="_blank" rel="noopener noreferrer">GitHub profile ↗</a><a class="button secondary" href="https://leetcode.com/u/YuvarajRathod26/" target="_blank" rel="noopener noreferrer">LeetCode profile ↗</a></div></div>
       <div class="portrait"><img src="yuvaraj-rathod-profile.png" alt="Yuvaraj Rathod" /></div>
     </section>
+    <div class="wrap quick-facts" aria-label="Career highlights"><div class="fact"><strong>6 months</strong><span>Full stack internship</span></div><div class="fact"><strong>Java · Spring</strong><span>Backend focus</span></div><div class="fact"><strong>2 featured projects</strong><span>Built for practical use</span></div></div>
     <section id="about"><div class="wrap about"><div><span class="section-label">About me</span><h2>From backend logic to frontend polish.</h2></div><p>I build end-to-end web applications with a strong foundation in <strong>Core Java, Spring Boot, REST APIs, and MySQL</strong>. During a six-month full-stack internship, I worked across the software lifecycle - from requirements and coding through testing and deployment. I’m detail-oriented, eager to learn, and comfortable taking on new tools and challenges to keep improving as a developer.</p></div></section>
-    <section id="experience"><div class="wrap about"><div><span class="section-label">Experience</span><h2>Learning by shipping.</h2></div><p><strong>Java Full Stack Developer Intern</strong><br>Dhee Coding Lab · Feb 2026 - Jul 2026<br><br>Built and maintained web applications using Core Java and Spring Boot, with HTML, CSS, and JavaScript on the frontend. Developed RESTful APIs backed by MySQL through JPA/Hibernate, while collaborating in Agile workflows with Git and GitHub.</p></div></section>
-    <section id="skills"><div class="wrap"><span class="section-label">Capabilities</span><h2>My technical toolkit.</h2><div class="skills"><article class="skill"><h3>Programming languages</h3><p>C · Core Java · Advanced Java</p></article><article class="skill"><h3>Backend & frameworks</h3><p>Spring Boot · REST APIs · JPA / Hibernate</p></article><article class="skill"><h3>Web technologies</h3><p>HTML · CSS · JavaScript</p></article><article class="skill"><h3>Tools & platforms</h3><p>GitHub · VS Code · Eclipse</p></article></div></div></section>
-    <section id="projects"><div class="wrap"><span class="section-label">Selected work</span><h2>Projects with real-world purpose.</h2><div class="projects"><article class="project"><div><span class="project-type">Java · Servlets · MySQL</span><h3>HRDesk</h3></div><p>HR management system with role-based admin and employee access, attendance, leave approvals, PDF payslips, email notifications, and Docker deployment.</p></article><article class="project"><div><span class="project-type">Python · TensorFlow · OpenCV</span><h3>Sign Language Translator</h3></div><p>A bidirectional Indian Sign Language translator that recognizes gestures and converts signs to text or speech - and vice versa.</p></article><article class="project"><div><span class="project-type">Education</span><h3>B.E. Information Science</h3></div><p>Acharya Institute of Technology, Bangalore · 2022 - 2026<br><br>CGPA: 7.3 / 10</p></article></div></div></section>
-    <section class="contact" id="contact"><div class="wrap"><span class="section-label" style="color:var(--gold)">Get in touch</span><h2>Have an idea worth building?</h2><p>I’m open to developer opportunities, collaborations, and conversations about building useful software.</p><div class="actions"><a class="button" href="tel:+918431291386">Call · +91 8431291386</a><button class="button contact-email" type="button" data-email="yuvarajrathod2602@gmail.com">Email · yuvarajrathod2602@gmail.com</button><a class="button linkedin" href="https://www.linkedin.com/in/yuvaraj-rathod-620b19226/" target="_blank" rel="noreferrer">LinkedIn</a></div></div></section>
+    <section id="experience"><div class="wrap about"><div><span class="section-label">Experience</span><h2>Learning by shipping.</h2></div><p><strong>Java Full Stack Developer Intern</strong><br>Dhee Coding Lab · Feb 2026 - Aug 2026<br><br>Built and maintained end-to-end web applications using Core Java, Spring Boot, Spring MVC, and HTML, CSS, and JavaScript. Developed REST APIs with Spring Data JPA and MySQL, applied Spring Security for authentication and role-based access, and collaborated through Agile practices, code reviews, and Git/GitHub.</p></div></section>
+    <section id="skills"><div class="wrap"><span class="section-label">Capabilities</span><h2>My technical toolkit.</h2><div class="skills"><article class="skill"><h3>Programming languages</h3><p>C · Core Java · Advanced Java · OOP · Data Structures & Algorithms</p></article><article class="skill"><h3>Backend & frameworks</h3><p>Spring Core · Spring Boot · Spring MVC · Spring Data JPA · Spring Security · REST APIs</p></article><article class="skill"><h3>Web technologies</h3><p>HTML · CSS · JavaScript</p></article><article class="skill"><h3>Tools & platforms</h3><p>SQL · Git/GitHub · VS Code · Eclipse</p></article></div></div></section>
+    <section id="projects"><div class="wrap"><span class="section-label">Selected work</span><h2>Projects with real-world purpose.</h2><div class="projects"><article class="project"><div><span class="project-type">Java · Servlets · MySQL</span><h3>HRDesk</h3></div><p>Full-stack HR management system built with Jakarta Servlets, JSP, JDBC, and MySQL using a layered DAO architecture. Includes role-based Admin and Employee access, attendance and leave workflows, PDF payslips, JavaMail notifications, support tickets, and Docker deployment to Railway.<br><br><strong>Jul 2026 – Aug 2026</strong></p></article><article class="project"><div><span class="project-type">Python · TensorFlow · OpenCV</span><h3>Bidirectional Sign Language Translator</h3></div><p>Uses TensorFlow and OpenCV to recognize Indian Sign Language gestures and convert hand signs into text or speech, and vice versa, supporting communication between hearing-impaired people and the general public.<br><br><strong>Jun 2025 – Dec 2025</strong></p></article></div></div></section>
+    <section id="profiles"><div class="wrap"><span class="section-label">Coding profiles</span><h2>More of my work online.</h2><div class="profiles"><a class="profile-card" href="https://github.com/YuvarajRathod26" target="_blank" rel="noopener noreferrer"><div><strong>GitHub</strong><span>Projects, code, and what I’m building</span></div><span class="profile-arrow" aria-hidden="true">↗</span></a><a class="profile-card" href="https://leetcode.com/u/YuvarajRathod26/" target="_blank" rel="noopener noreferrer"><div><strong>LeetCode</strong><span>Problem solving and coding practice</span></div><span class="profile-arrow" aria-hidden="true">↗</span></a></div></div></section>
+    <section id="education"><div class="wrap"><span class="section-label">Education & certifications</span><h2>Building a strong foundation.</h2><div class="credentials"><article class="credential-card"><span class="credential-kicker">Education</span><h3>B.E. in Information Science and Engineering</h3><p>Acharya Institute of Technology, Bangalore<br>2022–2026</p><strong class="credential-result">CGPA: 7.53 / 10</strong></article><article class="credential-card"><span class="credential-kicker">Certifications</span><h3>Java Full Stack Development Internship</h3><p>Dhee Coding Lab · Feb–Aug 2026</p><strong class="credential-result">6-month internship certificate</strong><div class="cert-list"><p><strong>C Language with Logic Building</strong><br>MySirG</p><p><strong>Java Programming</strong><br>MySirG</p></div></article></div></div></section>
+    <section class="contact" id="contact"><div class="wrap"><span class="section-label" style="color:var(--gold)">Get in touch</span><h2>Have an idea worth building?</h2><p>I’m open to developer opportunities, collaborations, and conversations about building useful software.</p><div class="actions"><a class="button" href="tel:+918431291386">Call · +91 8431291386</a><button class="button contact-email" type="button" data-email="yuvarajrathod2602@gmail.com">Email · yuvarajrathod2602@gmail.com</button><a class="button linkedin" href="https://www.linkedin.com/in/yuvaraj-rathod-620b19226/" target="_blank" rel="noopener noreferrer">LinkedIn</a></div></div></section>
   </main>
   <footer><div class="wrap"><span>© 2026 Yuvaraj Rathod</span><span>Java Full Stack Developer · +91 8431291386</span></div></footer>
   <script>
